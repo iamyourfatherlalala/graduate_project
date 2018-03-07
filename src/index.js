@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Reg from './Reg';
-import Props from './Props';
-import ListItems from './ListItems';
-import NameForm from './NameForm';
-import Login from './Login';
+import { Login } from './Login';
+import Home from './Home';
+// import Props from './Props';
+// import ListItems from './ListItems';
+// import NameForm from './NameForm';
+
+
+
 
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Route, IndexRedirect } from 'react-router-dom';
@@ -21,12 +24,9 @@ import { BrowserRouter as Router, Route, IndexRedirect } from 'react-router-dom'
 //ReactDOM.render(<NameForm />, document.getElementById('root'));
 ReactDOM.render(
     <Router>
-        {/* <Route path="/" component={Login}>
-            <Route path="reg" component={Reg} />
-        </Route> */}
         <div>
           <Route path="/" component={Login} />
-          <Route path="/reg" component={Reg} />
+          <Route exact path="/home" component={Home} />   
         </div>
     </Router>, document.getElementById('root'));
 

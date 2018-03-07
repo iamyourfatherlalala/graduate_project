@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './Reg.css';
+import './Home.css';
 import fetch from 'isomorphic-fetch';
 import { Redirect } from 'react-router-dom'
+
+let token = '';
 
 class Login extends Component {
   name;
@@ -14,32 +16,20 @@ class Login extends Component {
     }
   }
 
-  signIn(e) {
+  async signIn(e) {
     e.preventDefault(); //in case of the loop
     let data = {
       name: this.name.value,
       password: this.password.value,          //props
     }
     let url = `http://58.196.130.215/EMS/greeting?name=${data.name}&password=${data.password}`
-    let tmpurl = 'www.baidu.com'
-    fetch(tmpurl, {
-      method: 'GET',
-      mode: 'no-cors',
-      headers: {
-        // 'Content-Type': 'application/x-www-form-urlencoded'
-        'Content-Type': 'application/json'
-      },
-      // body: JSON.stringify(data)          //does not need body in 'GET' request
-    }).then(
-      (res) => {
-        // const path = `/reg/${this.name.value}/${this.password.value}`
-        this.setState({ loginSuccess: true});
-      }
-    )
-      .catch(function (error) {
-        console.log(error);
-        alert('request failed');
-      })
+    const response = await fetch(url);
+    const result = await response.json();
+    token = result.token;
+    if (token) {
+      this.setState({ loginSuccess: true });
+    }
+    console.log(token);
   }
 
   render() {
@@ -53,12 +43,7 @@ class Login extends Component {
               name="name"
               type="text"
               placeholder="username"
-              ref={input => {
-                if (input !== null) {
-                  this.name = input
-                }
-              }}
-            />
+              ref={input => this.name = input} />
           </div>
           <div>
             <input
@@ -72,10 +57,10 @@ class Login extends Component {
         </form>
       );
     } else {
-      return <Redirect to='/reg' />
+      return <Redirect to='/home' />
     }
   }
 }
 
-export default Login;
+export {Login, token};
 
