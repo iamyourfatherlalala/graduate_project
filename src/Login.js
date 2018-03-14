@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './Home.css';
+import './Login.css';
 import fetch from 'isomorphic-fetch';
 import { Redirect } from 'react-router-dom'
 
@@ -36,7 +37,12 @@ class Login extends Component {
     console.log(this.state.loginSuccess);
     if (!this.state.loginSuccess) {
       return (
-        <form onSubmit={(e) => this.signIn(e)}>
+        <div className="Background">
+        <div className="page-header page-custom">
+          <h1>Examination Management System</h1>
+        </div>
+        <div class="row" height="80%">
+          <form onSubmit={(e) => this.signIn(e)}>
           <div>
             <input
               id="name"
@@ -53,8 +59,10 @@ class Login extends Component {
               placeholder="password"
               ref={input => this.password = input} />
           </div>
-          <button>Sign in</button>
-        </form>
+          <button className="blue">Sign in</button>
+          </form>
+          </div>
+        </div>
       );
     } else {
       return <Redirect to='/home' />
