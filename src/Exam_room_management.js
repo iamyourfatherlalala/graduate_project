@@ -7,6 +7,9 @@ import { BrowserRouter as Router, Route, IndexRedirect } from 'react-router-dom'
 import { token } from './Login';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import 'semantic-ui-css/semantic.min.css';
+import { Button } from 'semantic-ui-react';
+
 
 class Exam_room_management extends Component {
     constructor(props) {
@@ -41,7 +44,7 @@ class Exam_room_management extends Component {
     render() {
         if (!this.state.exam_conditions[0]) {
             return (
-                <button onClick={this.handleButton}>give out papers</button>
+                <Button size='huge' color='twitter' onClick={this.handleButton}>Give Out Papers</Button>
             );
          } 
          else {
