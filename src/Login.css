@@ -1,4 +1,4 @@
-.Background {
+/* .Background {
     background: url('./image/3.jpg');	
     height: 100vh;
     display: flex;
@@ -11,9 +11,15 @@
 
 .page-custom {
     color: #fff;
+} */
+
+.login {
+    background: url('./image/3.jpg');	
+    display: flex;
+    align-items: center;
+    height: 100vh;
 }
 
-.blue {
-    color: white;
-    background-color: deepskyblue;
+.container {
+   height: 60vh;
 }

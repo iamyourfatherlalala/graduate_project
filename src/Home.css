@@ -17,15 +17,15 @@ div.root {
   /* height: 100vh; */
 }
 
-.container {
+.overview {
   /* position: relative; */
   display: flex;
   
   /* flex: auto;
   overflow: auto; */
   /* align-items: stretch; */
-  /* background: url('./image/3.jpg'); */
   background: url('./image/3.jpg');
+  
 }
 
 .navigation {

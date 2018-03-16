@@ -2,25 +2,28 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './Home.css';
 import fetch from 'isomorphic-fetch';
-import { browserHistory } from 'react-router'
+import { browserHistory, Redirect } from 'react-router'
 import { BrowserRouter as Router, Route, IndexRedirect, Link} from 'react-router-dom';
 import { Menu, Segment, Sidebar } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 import About from './About';
 import Exam_room_management from './Exam_room_management';
+import {Login} from './Login';
 import PropTypes from 'prop-types';
 
 const colors = [
   'teal','blue', 
 ]
 
-// compont
+// componentWillMount() {
+
+//}
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      activeItemMenu: 'signup',
+      activeItemMenu: 'signout',
       activeItemNav: 'exam_room_management'
     }
   }
@@ -29,7 +32,9 @@ class Home extends Component {
     color: PropTypes.string,
   }
 
-  handleMenuClick = (e, { name }) => this.setState({ activeItemMenu: name })
+  handleMenuClick = (e, { name }) => {this.setState({ activeItemMenu: name });
+  //history.push("/");
+}
 
   handleNavClick = (e, { name }) => this.setState({ activeItemNav: name })
 
@@ -47,7 +52,7 @@ class Home extends Component {
        </Menu.Item>
 
          <Menu.Menu position='right'>
-          <Menu.Item name='signup' active={activeItemMenu === 'signup'} onClick={this.handleMenuClick}>
+          <Menu.Item name='signout' active={activeItemMenu === 'signout'} onClick={this.handleMenuClick}>
            Sign Out
           </Menu.Item>
 
@@ -60,7 +65,7 @@ class Home extends Component {
     </div>
 
       
-     <div className="container">
+     <div className="overview">
     <div className="navigation">
   
     <Sidebar as={Menu} width='thin' visible={true} icon='labeled' vertical inverted>
@@ -74,7 +79,7 @@ class Home extends Component {
   
     <Route path="/exam_room_management" exact component={Exam_room_management} />
     <Route path="/about" exact component={About} />
-  
+   {/* <Route path="/" exact component={Login} /> */}
     </div>
 
     </div>

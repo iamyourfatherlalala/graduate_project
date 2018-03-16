@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './Home.css';
 import './Login.css';
 import Home from './Home';
 import fetch from 'isomorphic-fetch';
@@ -53,7 +52,8 @@ class Login extends Component {
     console.log(this.state.loginSuccess);
     if (!this.state.loginSuccess) {
       return (
-        <Container text>
+        <div className="login">
+        <Container as="div" className="container" text>
         <Header as="h1" textAlign='center'>Sign In</Header>
         <Input
         icon='user'
@@ -74,7 +74,7 @@ class Login extends Component {
         />
         <Button primary onClick={this.signIn} fluid>Submit</Button>
         </Container>
-
+       </div>
 
 ///////////////////////////////////////////////////////////
 
