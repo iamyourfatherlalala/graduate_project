@@ -37,6 +37,7 @@ class Home extends Component {
     const { color } = this.props
     const { activeItemMenu, activeItemNav } = this.state
     return (
+      <Router>
     <div className="main">
       <div className="menubar">
   
@@ -71,8 +72,8 @@ class Home extends Component {
 
     <div className="table">>
   
-    <Route path="/exam_room_management" component={Exam_room_management} />
-    <Route path="/about" component={About} />
+    <Route path="/exam_room_management" exact component={Exam_room_management} />
+    <Route path="/about" exact component={About} />
   
     </div>
 
@@ -80,6 +81,7 @@ class Home extends Component {
 
 
 </div>
+</Router>
 
 
  

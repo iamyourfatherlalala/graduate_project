@@ -10,21 +10,13 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Route,  Switch } from 'react-router-dom';
 
 ReactDOM.render(
-    // <Router>
-    //     <div>
-    //       <Route path="/" component={Login} />
-    //       <Route exact path="/home" component={Home} />   
-    //     </div>
-       
-    // </Router>
- 
     <Router>
        <Switch>
            <Route path="/" exact component={Login} />
            <Route path="/home" exact component={Home} />   
             {/* <Route path="/exam_room_management" component={Exam_room_management} />
            <Route path="/about" component={About} /> */}
-            
+           
        </Switch>
       
      </Router>
