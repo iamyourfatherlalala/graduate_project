@@ -44,7 +44,7 @@ class Exam_room_management extends Component {
     render() {
         if (!this.state.exam_conditions[0]) {
             return (
-                <Button size='huge' color='twitter' onClick={this.handleButton}>Give Out Papers</Button>
+                <Button size='small' color='twitter' onClick={this.handleButton}>Give Out Papers</Button>
             );
          } 
          else {
