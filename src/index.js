@@ -8,19 +8,28 @@ import 'semantic-ui-css/semantic.min.css';
 import { Menu } from 'semantic-ui-react'
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Route,  Switch } from 'react-router-dom';
+import { Provider } from 'mobx-react';
 
-ReactDOM.render(
-    <Router>
-       <Switch>
-           {/* <Route path="/" exact component={Login} /> */}
-           <Route path="/home" exact component={Home} />   
-            {/* <Route path="/exam_room_management" component={Exam_room_management} />
-           <Route path="/about" component={About} /> */}
-           
-       </Switch>
+import { LoginStore } from './stores/LoginStore';
+
+const Root = (
+    // <Provider >
+    //     <Router>
+    //    <Switch>
+    //        {/* <Route path="/" exact component={Login} />
+    //        <Route path="/home" exact component={Home} />    */}
+    //         {/* <Route path="/exam_room_management" component={Exam_room_management} />
+    //        <Route path="/about" component={About} /> */}
+    //        <Login />
+    //    </Switch>
       
-     </Router>
+    //  </Router>
+    // </Provider>
+    <Provider LoginStore={LoginStore}>
+      <App />
+    </Provider>
+);
 
-    , document.getElementById('root'));
+ReactDOM.render(Root,document.getElementById('root'));
 
 registerServiceWorker();

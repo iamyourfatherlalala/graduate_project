@@ -5,6 +5,7 @@ import Home from './Home';
 import fetch from 'isomorphic-fetch';
 import { Redirect } from 'react-router-dom'
 import { Button, Segment, Input, Container, Header } from 'semantic-ui-react'
+import { inject, observer } from 'mobx-react';
 
 let token = '';
 const sizes = ['mini', 'tiny', 'small', 'large', 'big', 'huge', 'massive']
@@ -15,42 +16,43 @@ class Login extends Component {
   // password;
   constructor(props) {
     super(props);
-    this.state = {
-      loginSuccess: false,
-      name: '',
-      password: ''
-    }
+    // this.state = {
+    //   loginSuccess: false,
+    //   name: '',
+    //   password: ''
+    // }
+  
   }
 
   onChange = (e) => {
    const { name, value } = e.target;
-   this.setState({ [name]: value });
+   //this.setState({ [name]: value });
+   this[name] = value;
   }
 
   signIn = async () => {
-     // e.preventDefault(); //in case of the loop
-    // let data = {
-    //   name: this.name.value,
-    //   password: this.password.value,          //props
+    // const data = {
+    //   name: this.state.name,
+    //   password: this.state.password,         
     // }
-    const data = {
-      name: this.state.name,
-      password: this.state.password,         
-    }
-    let url = `http://58.196.130.215/EMS/greeting?name=${data.name}&password=${data.password}`
+     const { loginSuccess, name, password } = this;
+
+    let url = `http://58.196.130.215/EMS/greeting?name=${name}&password=${password}`
     const response = await fetch(url);
     const result = await response.json();
     token = result.token;
     if (token) {
-      this.setState({ loginSuccess: true });
+      // this.setState({ loginSuccess: true });
+      loginSuccess: true;
     }
     console.log(token);
   }
 
   render() {
-    const { name, password } = this.state;
-    console.log(this.state.loginSuccess);
-    if (!this.state.loginSuccess) {
+   // const { name, password } = this.state;
+   // console.log(this.state.loginSuccess);
+   const { loginSuccess, name, password } = this;
+    if (!loginSuccess) {
       return (
         <div className="login">
         <Container as="div" className="container" text>
@@ -106,11 +108,12 @@ class Login extends Component {
         // </div>
       );
     } else {
-      return <Redirect to='/home' />
-      // return <Redirect from='/' to='/home'/>
+      // return <Redirect to='/home' />
+      return <h1>hello world</h1>
+     
     }
   }
 }
 
-export {Login, token};
+ export default {Login, token};
 
